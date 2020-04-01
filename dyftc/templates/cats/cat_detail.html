@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+<h1>{{ cat }}</h1>
+{% if feeders %}<h2>{% trans "feeders"|title %}</h2>
+<ul>
+  {% for feeder in feeders %}<li><a href="{{ feeder.get_absolute_url }}">{{ feeder }}</a></li>{% endfor %}
+</ul>
+{% endif %}
+{% endblock content %}
