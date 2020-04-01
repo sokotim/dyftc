@@ -7,6 +7,11 @@
     {{ last_feeding.created|date:"DATETIME_FORMAT" }}
   </a> ({{ last_feeding.created|naturaltime }})
 </p>
+{% if request.user in feeders %}<p>
+  <a class="btn btn-primary" href="{% url "cats:feed" cat.slug %}">
+    {% trans "feed"|title %}
+  </a>
+</p>{% endif %}
 {% if feeders %}<h2>{% trans "feeders"|title %}</h2>
 <ul>
   {% for feeder in feeders %}<li><a href="{{ feeder.get_absolute_url }}">{{ feeder }}</a></li>{% endfor %}
