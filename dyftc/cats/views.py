@@ -10,6 +10,7 @@ class CatDetailView(LoginRequiredMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["feeders"] = self.object.feeders.all()
+        context["last_feeding"] = self.object.feedings.last()
         return context
 
 

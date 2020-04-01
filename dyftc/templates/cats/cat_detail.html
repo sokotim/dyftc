@@ -1,7 +1,12 @@
 {% extends "base.html" %}
-{% load i18n %}
+{% load i18n humanize %}
 {% block content %}
 <h1>{{ cat }}</h1>
+<p class="lead">
+  {% trans "Last feeding" %}: <a href="{{ last_feeding.get_absolute_url }}">
+    {{ last_feeding.created|date:"DATETIME_FORMAT" }}
+  </a> ({{ last_feeding.created|naturaltime }})
+</p>
 {% if feeders %}<h2>{% trans "feeders"|title %}</h2>
 <ul>
   {% for feeder in feeders %}<li><a href="{{ feeder.get_absolute_url }}">{{ feeder }}</a></li>{% endfor %}

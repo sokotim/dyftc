@@ -41,9 +41,7 @@ LOCALE_PATHS = [str(ROOT_DIR / "locale")]
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
-DATABASES = {
-    "default": env.db("DATABASE_URL", default="postgres://localhost/dyftc")
-}
+DATABASES = {"default": env.db("DATABASE_URL", default="postgres://localhost/dyftc")}
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
 
 # URLS
@@ -62,7 +60,7 @@ DJANGO_APPS = [
     "django.contrib.sites",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # "django.contrib.humanize", # Handy template tags
+    "django.contrib.humanize",
     "django.contrib.admin",
     "django.forms",
 ]
@@ -74,8 +72,9 @@ THIRD_PARTY_APPS = [
 ]
 
 LOCAL_APPS = [
-    "dyftc.users.apps.UsersConfig",
     "dyftc.cats.apps.CatsConfig",
+    "dyftc.feedings.apps.FeedingsConfig",
+    "dyftc.users.apps.UsersConfig",
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps

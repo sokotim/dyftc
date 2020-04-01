@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block content %}
+<h1>{{ feeding.created|date:"DATETIME_FORMAT" }}
+  <small class="text-muted">{{ feeding.created|naturaltime }}</small>
+</h1>
+<p class="lead">
+  <a href="{{ feeding.feeder.get_absolute_url }}">
+    {{ feeding.feeder }}
+  </a>
+  {% if cats %}{% trans "fed" %}
+  {% for cat in cats %}<a href="{{ cat.get_absolute_url }}">
+    {{ cat }}
+  </a>{% if not forloop.last %}, {% endif %}{% endfor %}{% endif %}
+</p>
+{% endblock content %}
